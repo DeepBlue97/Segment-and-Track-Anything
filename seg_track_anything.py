@@ -10,6 +10,7 @@ import imageio
 from scipy.ndimage import binary_dilation
 
 def save_prediction(pred_mask,output_dir,file_name):
+    cv2.imwrite(os.path.join(output_dir, "gray_"+file_name), pred_mask)
     save_mask = Image.fromarray(pred_mask.astype(np.uint8))
     save_mask = save_mask.convert(mode='P')
     save_mask.putpalette(_palette)
@@ -198,6 +199,7 @@ def video_type_input_tracking(SegTracker, input_video, io_args, video_name, fram
         ret, frame = cap.read()
         if not ret:
             break
+        cv2.imwrite(f"{io_args['output_mask_dir']}/ori_{str(frame_idx).zfill(5)}.jpg", frame)
 
         frame = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
         pred_mask = pred_list[frame_idx]

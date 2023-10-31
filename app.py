@@ -478,7 +478,7 @@ def seg_track_app():
 
         with gr.Row():
             # video input
-            with gr.Column(scale=0.5):
+            with gr.Column(scale=1):
 
                 tab_video_input = gr.Tab(label="Video type input")
                 with tab_video_input:
@@ -550,17 +550,17 @@ def seg_track_app():
                     detect_button = gr.Button(value="Detect")
                     with gr.Accordion("Advanced options", open=False):
                         with gr.Row():
-                            with gr.Column(scale=0.5):
+                            with gr.Column(scale=1):
                                 box_threshold = gr.Slider(
                                     label="Box Threshold", minimum=0.0, maximum=1.0, value=0.25, step=0.001
                                 )
-                            with gr.Column(scale=0.5):
+                            with gr.Column(scale=1):
                                 text_threshold = gr.Slider(
                                     label="Text Threshold", minimum=0.0, maximum=1.0, value=0.25, step=0.001
                                 )
 
                 with gr.Row():
-                    with gr.Column(scale=0.5):
+                    with gr.Column(scale=1):
                         with gr.Tab(label="SegTracker Args"):
                             # args for tracking in video do segment-everthing
                             points_per_side = gr.Slider(
@@ -619,7 +619,7 @@ def seg_track_app():
                                 interactive=True,
                                 )
 
-            with gr.Column(scale=0.5):
+            with gr.Column(scale=1):
                 # output_video = gr.Video(label='Output video').style(height=550)
                 output_video = gr.File(label="Predicted video")
                 output_mask = gr.File(label="Predicted masks")
